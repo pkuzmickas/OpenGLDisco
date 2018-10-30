@@ -1,0 +1,41 @@
+﻿  Cube.cpp
+  GLHandler.cpp
+  main.cpp
+  Renderer.cpp
+  Generating Code...
+GLHandler.obj : error LNK2019: unresolved external symbol glewInit referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glewGetErrorString referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glewGetString referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwSetErrorCallback referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function "public: void __cdecl GLHandler::play(void)" (?play@GLHandler@@QEAAXXZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwSetFramebufferSizeCallback referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl GLHandler::play(void)" (?play@GLHandler@@QEAAXXZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "public: __cdecl GLHandler::GLHandler(void)" (??0GLHandler@@QEAA@XZ)
+GLHandler.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl GLHandler::play(void)" (?play@GLHandler@@QEAAXXZ)
+Renderer.obj : error LNK2001: unresolved external symbol __glewBindBuffer
+Renderer.obj : error LNK2001: unresolved external symbol __glewBufferData
+Renderer.obj : error LNK2001: unresolved external symbol __glewGenBuffers
+Renderer.obj : error LNK2001: unresolved external symbol __glewDisableVertexAttribArray
+Renderer.obj : error LNK2001: unresolved external symbol __glewEnableVertexAttribArray
+Renderer.obj : error LNK2001: unresolved external symbol __glewGetUniformLocation
+Renderer.obj : error LNK2001: unresolved external symbol __glewUniformMatrix4fv
+Renderer.obj : error LNK2001: unresolved external symbol __glewUseProgram
+Renderer.obj : error LNK2001: unresolved external symbol __glewVertexAttribPointer
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewAttachShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCompileShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCreateProgram
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewCreateShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewDeleteShader
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramInfoLog
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramiv
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderInfoLog
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderiv
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewLinkProgram
+ShaderHandler.obj : error LNK2001: unresolved external symbol __imp___glewShaderSource
+lib\win32\glfw3D.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+lib\win32\glew32sd.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\pauliuskuzmickas\Desktop\graphics\x64\Debug\thedisco.exe : fatal error LNK1120: 33 unresolved externals
