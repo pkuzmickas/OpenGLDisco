@@ -25,7 +25,7 @@ GLHandler::GLHandler() {
 	glfwSetErrorCallback(errorCallback);
 	glfwSetFramebufferSizeCallback(window, reshapeCallback);
 	glfwSetKeyCallback(window, keyCallback);
-	
+
 	renderer = new Renderer();
 	Character(renderer, vec3(0, 0, -1.5f));
 	Character(renderer, vec3(0, 0, -0.5f));
@@ -34,8 +34,8 @@ GLHandler::GLHandler() {
 }
 
 GLHandler::~GLHandler() {
-	if(renderer)
-	delete renderer;
+	if (renderer)
+		delete renderer;
 }
 
 void GLHandler::errorCallback(int error, const char * desc) {
@@ -48,7 +48,7 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 		//camera movement
 		if (key_code == GLFW_KEY_W)
 			Camera::move(Camera::movingDir::FORWARD, true);
-			/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
+		/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
 		else if (key_code == GLFW_KEY_S)
 			Camera::move(Camera::movingDir::BACKWARD, true);
 
@@ -56,14 +56,7 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 			Camera::move(Camera::movingDir::LEFT, true);
 		else if (key_code == GLFW_KEY_D)
 			Camera::move(Camera::movingDir::RIGHT, true);
-		if (key_code == GLFW_KEY_LEFT)
-			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0.1f, 0));
-		else if (key_code == GLFW_KEY_RIGHT)
-			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0.1f, 0));
-		if (key_code == GLFW_KEY_UP)
-			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0, 0.1f));
-		else if (key_code == GLFW_KEY_DOWN)
-			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0, 0.1f));
+		
 	}
 	if (action == GLFW_RELEASE)
 	{
@@ -78,19 +71,12 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 			Camera::move(Camera::movingDir::LEFT, false);
 		else if (key_code == GLFW_KEY_D)
 			Camera::move(Camera::movingDir::RIGHT, false);
-		if (key_code == GLFW_KEY_LEFT)
-			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0.1f, 0));
-		else if (key_code == GLFW_KEY_RIGHT)
-			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0.1f, 0));
-		if (key_code == GLFW_KEY_UP)
-			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0, 0.1f));
-		else if (key_code == GLFW_KEY_DOWN)
-			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0, 0.1f));
+		
 	}
 }
 
 void GLHandler::reshapeCallback(GLFWwindow * window, int width, int height) {
-	
+
 }
 
 void GLHandler::play() {
