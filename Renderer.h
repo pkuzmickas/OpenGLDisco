@@ -6,6 +6,7 @@
 #pragma comment(lib, "glew32sd.lib")
 #pragma comment(lib, "opengl32.lib")
 
+#include "Camera.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/common.hpp>
@@ -13,6 +14,7 @@
 #include "Cube.h"
 #include "ShaderHandler.h"
 #include "Globals.h"
+
 
 using namespace std;
 class Shader;
@@ -35,12 +37,11 @@ public:
 	// Creates an object and returns a reference to its model
 	glm::mat4* createObject(Renderer::Objects objectType, int rgb[3]);
 
-	static glm::mat4 Camera;
 private:
 	vector<Object> drawQueue;
 	GLuint program;
 	ShaderHandler shaderHandler;
 	GLint modelID, viewID, projectionID;
-
+	
 
 };

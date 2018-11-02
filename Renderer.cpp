@@ -1,6 +1,7 @@
 #include "Renderer.h"
+
 using namespace glm;
-mat4 Renderer::Camera;
+
 Renderer::Renderer() {
 	try
 	{
@@ -19,11 +20,6 @@ Renderer::Renderer() {
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0, 0, 0, 1);
 
-	Camera = glm::lookAt(
-		glm::vec3(-5, 0, 0),
-		glm::vec3(0, 0, 0),
-		glm::vec3(0, 1, 0)
-	);
 }
 
 Renderer::~Renderer() {
@@ -55,7 +51,7 @@ void Renderer::draw() {
 		mat4 model = *obj.model;
 
 		
-		mat4 view = Camera;
+		mat4 view = Camera::camera;
 		view = translate(view, vec3(0.5f, 0, 0));
 
 		glm::mat4 projection = glm::perspective(glm::radians(30.0f), (float)Globals::WINDOW_WIDTH / Globals::WINDOW_HEIGHT, 0.1f, 100.f);
@@ -72,6 +68,7 @@ void Renderer::draw() {
 
 	glUseProgram(0);
 }
+
 
 glm::mat4* Renderer::createObject(Renderer::Objects objectType, int rgb[3]) {
 

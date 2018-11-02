@@ -100,7 +100,7 @@ void Cube::createCube(int rgb[3], GLfloat*& pos, GLfloat*& color, GLfloat*& norm
 		*/
 	/* Manually specified colours for our cube */
 	GLfloat vertexColours[] = {
-		0.0f, 0.0f, 1.0f, 1.0f,
+		/*0.0f, 0.0f, 1.0f, 1.0f,
 		0.0f, 0.0f, 1.0f, 1.0f,
 		0.0f, 0.0f, 1.0f, 1.0f,
 		0.0f, 0.0f, 1.0f, 1.0f,
@@ -140,7 +140,48 @@ void Cube::createCube(int rgb[3], GLfloat*& pos, GLfloat*& color, GLfloat*& norm
 		0.0f, 1.0f, 1.0f, 1.0f,
 		0.0f, 1.0f, 1.0f, 1.0f,
 		0.0f, 1.0f, 1.0f, 1.0f,
-		0.0f, 1.0f, 1.0f, 1.0f,
+		0.0f, 1.0f, 1.0f, 1.0f,*/
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
+		r, g, b, 1.0f,
 	};
 
 	/* Manually specified normals for our cube */

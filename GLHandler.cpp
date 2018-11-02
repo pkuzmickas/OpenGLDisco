@@ -27,7 +27,10 @@ GLHandler::GLHandler() {
 	glfwSetKeyCallback(window, keyCallback);
 	
 	renderer = new Renderer();
-	Character::createCharacter(renderer, vec3(0, 0, 0));
+	Character(renderer, vec3(0, 0, -1.5f));
+	Character(renderer, vec3(0, 0, -0.5f));
+	Character(renderer, vec3(0, 0, 0.5f));
+	Character(renderer, vec3(0, 0, 1.5f));
 }
 
 GLHandler::~GLHandler() {
@@ -44,35 +47,65 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 	{
 		//camera movement
 		if (key_code == GLFW_KEY_W)
-			Renderer::Camera = translate(Renderer::Camera, vec3(-0.1f, 0, 0));
+			Camera::move(Camera::movingDir::FORWARD, true);
+			/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
 		else if (key_code == GLFW_KEY_S)
-			Renderer::Camera = translate(Renderer::Camera, vec3(0.1f, 0, 0));
+			Camera::move(Camera::movingDir::BACKWARD, true);
 
 		if (key_code == GLFW_KEY_A)
-			Renderer::Camera = translate(Renderer::Camera, vec3(0, 0, 0.1f));
+			Camera::move(Camera::movingDir::LEFT, true);
 		else if (key_code == GLFW_KEY_D)
-			Renderer::Camera = translate(Renderer::Camera, vec3(0, 0, -0.1f));
+			Camera::move(Camera::movingDir::RIGHT, true);
 		if (key_code == GLFW_KEY_LEFT)
-			Renderer::Camera = rotate(Renderer::Camera, radians(15.f), vec3(0, 0.1f, 0));
+			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0.1f, 0));
 		else if (key_code == GLFW_KEY_RIGHT)
-			Renderer::Camera = rotate(Renderer::Camera, radians(-15.f), vec3(0, 0.1f, 0));
+			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0.1f, 0));
 		if (key_code == GLFW_KEY_UP)
-			Renderer::Camera = rotate(Renderer::Camera, radians(15.f), vec3(0, 0, 0.1f));
+			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0, 0.1f));
 		else if (key_code == GLFW_KEY_DOWN)
-			Renderer::Camera = rotate(Renderer::Camera, radians(-15.f), vec3(0, 0, 0.1f));
+			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0, 0.1f));
+	}
+	if (action == GLFW_RELEASE)
+	{
+		//camera movement
+		if (key_code == GLFW_KEY_W)
+			Camera::move(Camera::movingDir::FORWARD, false);
+		/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
+		else if (key_code == GLFW_KEY_S)
+			Camera::move(Camera::movingDir::BACKWARD, false);
+
+		if (key_code == GLFW_KEY_A)
+			Camera::move(Camera::movingDir::LEFT, false);
+		else if (key_code == GLFW_KEY_D)
+			Camera::move(Camera::movingDir::RIGHT, false);
+		if (key_code == GLFW_KEY_LEFT)
+			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0.1f, 0));
+		else if (key_code == GLFW_KEY_RIGHT)
+			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0.1f, 0));
+		if (key_code == GLFW_KEY_UP)
+			Camera::camera = rotate(Camera::camera, radians(15.f), vec3(0, 0, 0.1f));
+		else if (key_code == GLFW_KEY_DOWN)
+			Camera::camera = rotate(Camera::camera, radians(-15.f), vec3(0, 0, 0.1f));
 	}
 }
 
 void GLHandler::reshapeCallback(GLFWwindow * window, int width, int height) {
-	cout << "BYE" << endl;
+	
 }
 
 void GLHandler::play() {
 	while (!glfwWindowShouldClose(window))
 	{
-		//update();
+		update();
 		renderer->draw();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+}
+
+void GLHandler::update() {
+	deltaTime = glfwGetTime() - lastTime;
+	lastTime = glfwGetTime();
+
+	Camera::update(deltaTime);
 }

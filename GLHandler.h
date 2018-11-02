@@ -8,6 +8,7 @@ class GLHandler {
 private:
 	GLFWwindow* window;
 	Renderer* renderer = NULL;
+	float deltaTime, lastTime = 0;
 public:
 	GLHandler();
 	~GLHandler();
@@ -16,4 +17,5 @@ public:
 	static void reshapeCallback(GLFWwindow* window, int width, int height);
 
 	void play();
+	void update();
 };

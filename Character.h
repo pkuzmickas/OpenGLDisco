@@ -4,8 +4,7 @@
 #include "Renderer.h"
 using namespace glm;
 class Character {
-private:
-	Character();
 public:
-	static void createCharacter(Renderer* renderer, vec3 pos);
+	Character(Renderer* renderer, vec3 pos);
+
 };
