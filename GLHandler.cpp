@@ -27,7 +27,7 @@ GLHandler::GLHandler() {
 	glfwSetKeyCallback(window, keyCallback);
 	
 	renderer = new Renderer();
-	renderer->createObject(Renderer::Objects::CUBE);
+	Character::createCharacter(renderer, vec3(0, 0, 0));
 }
 
 GLHandler::~GLHandler() {
@@ -40,10 +40,27 @@ void GLHandler::errorCallback(int error, const char * desc) {
 }
 
 void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int action, int mods) {
-	/*glViewport(0, 0, (GLsizei)width, (GLsizei)height);
-	aspect_ratio = float(width) / float(height);
-}*/
-	cout << "HELLO" << endl;
+	if (action == GLFW_PRESS)
+	{
+		//camera movement
+		if (key_code == GLFW_KEY_W)
+			Renderer::Camera = translate(Renderer::Camera, vec3(-0.1f, 0, 0));
+		else if (key_code == GLFW_KEY_S)
+			Renderer::Camera = translate(Renderer::Camera, vec3(0.1f, 0, 0));
+
+		if (key_code == GLFW_KEY_A)
+			Renderer::Camera = translate(Renderer::Camera, vec3(0, 0, 0.1f));
+		else if (key_code == GLFW_KEY_D)
+			Renderer::Camera = translate(Renderer::Camera, vec3(0, 0, -0.1f));
+		if (key_code == GLFW_KEY_LEFT)
+			Renderer::Camera = rotate(Renderer::Camera, radians(15.f), vec3(0, 0.1f, 0));
+		else if (key_code == GLFW_KEY_RIGHT)
+			Renderer::Camera = rotate(Renderer::Camera, radians(-15.f), vec3(0, 0.1f, 0));
+		if (key_code == GLFW_KEY_UP)
+			Renderer::Camera = rotate(Renderer::Camera, radians(15.f), vec3(0, 0, 0.1f));
+		else if (key_code == GLFW_KEY_DOWN)
+			Renderer::Camera = rotate(Renderer::Camera, radians(-15.f), vec3(0, 0, 0.1f));
+	}
 }
 
 void GLHandler::reshapeCallback(GLFWwindow * window, int width, int height) {

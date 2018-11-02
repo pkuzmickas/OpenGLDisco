@@ -4,5 +4,5 @@
 class Cube {
 	Cube() {};
 public:
-	static void createCube(GLfloat*& pos, GLfloat*& color, GLfloat*& normals, GLint& sizeP, GLint& sizeC, GLint& sizeN);
+	static void createCube(int rgb[3], GLfloat*& pos, GLfloat*& color, GLfloat*& normals, GLint& sizeP, GLint& sizeC, GLint& sizeN);
 };

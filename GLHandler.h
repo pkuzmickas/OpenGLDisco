@@ -2,7 +2,7 @@
 
 #include "Globals.h"
 
-#include "Renderer.h"
+#include "Character.h"
 #include <iostream>
 class GLHandler {
 private:
