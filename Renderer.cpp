@@ -52,7 +52,7 @@ Renderer::Renderer() {
 	int rgb[3] = { 0,0,0 };
 	skybox = createObject(SKYBOX, rgb);
 	*skybox = translate(*skybox, vec3(0, 0, 0));
-	*skybox = scale(*skybox, vec3(25, 12, 25));
+	*skybox = scale(*skybox, vec3(25, 18, 25));
 }
 
 /*

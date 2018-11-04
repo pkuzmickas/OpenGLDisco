@@ -32,7 +32,7 @@ void Camera::update(float dt) {
 		}
 	}
 	else if (moving[BACKWARD]) {
-		if (camMovedAmount > -10) {
+		if (camMovedAmount > -5) {
 			vec3 forward(camera[0][2], camera[1][2], camera[2][2]);
 			vec3 strafe(camera[0][0], camera[1][0], camera[2][0]);
 			vec3 movement = (-forward) * speed * dt;
