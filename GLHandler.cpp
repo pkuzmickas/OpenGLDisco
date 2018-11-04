@@ -4,7 +4,6 @@
 using namespace std;
 
 bool GLHandler::sceneInit = false;
-
 GLHandler::GLHandler() {
 	if (!glfwInit())
 	{
@@ -32,20 +31,20 @@ GLHandler::GLHandler() {
 
 	renderer = new Renderer();
 
-	srand(time(NULL));	
+	srand(time(NULL));
 
 	float startPos = -10.f;
 	for (int i = 0; i < 20; i++) {
 		int rgb[2][3] = { { rand() % 255 , rand() % 255, rand() % 255 }, { rand() % 255 , rand() % 255 , rand() % 255 } };
-		characters.push_back(new Character(renderer, vec3(0, 0, startPos + i*1.6f), rgb));
+		characters.push_back(new Character(renderer, vec3(0, 0, startPos + i * 1.6f), rgb));
 	}
-	
+
 
 	std::cout << "-------------------------------------" << endl;
 	std::cout << "WELCOME TO THE DISCO" << endl;
 	std::cout << "-------------------------------------" << endl;
 	std::cout << "Press ENTER to UNLEASH the disco!" << endl;
-	
+
 
 }
 
@@ -65,17 +64,19 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 	if (action == GLFW_PRESS)
 	{
 		//camera movement
-		if (key_code == GLFW_KEY_W)
+		if (key_code == GLFW_KEY_W) {
 			Camera::move(Camera::movingDir::FORWARD, true);
-		/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
-		else if (key_code == GLFW_KEY_S)
+		}
+		else if (key_code == GLFW_KEY_S) {
 			Camera::move(Camera::movingDir::BACKWARD, true);
+		}
+			
 
 		if (key_code == GLFW_KEY_A)
 			Camera::move(Camera::movingDir::LEFT, true);
 		else if (key_code == GLFW_KEY_D)
 			Camera::move(Camera::movingDir::RIGHT, true);
-		
+
 		if (key_code == GLFW_KEY_ENTER) {
 			GLHandler::sceneInit = true;
 			Renderer::drawDisco = true;
@@ -95,7 +96,7 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 			if (Character::danceSpeed <= 500) {
 				Character::danceSpeed += 50;
 			}
-			
+
 		}
 		if (key_code == GLFW_KEY_G) {
 			if (Character::danceSpeed >= 100) {
@@ -107,17 +108,17 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 	if (action == GLFW_RELEASE)
 	{
 		//camera movement
-		if (key_code == GLFW_KEY_W)
+		if (key_code == GLFW_KEY_W) {
 			Camera::move(Camera::movingDir::FORWARD, false);
-		/*Camera::camera = translate(Camera::camera, vec3(-0.1f, 0, 0));*/
-		else if (key_code == GLFW_KEY_S)
+		}
+		else if (key_code == GLFW_KEY_S) {
 			Camera::move(Camera::movingDir::BACKWARD, false);
-
+		}
 		if (key_code == GLFW_KEY_A)
 			Camera::move(Camera::movingDir::LEFT, false);
 		else if (key_code == GLFW_KEY_D)
 			Camera::move(Camera::movingDir::RIGHT, false);
-		
+
 	}
 }
 
@@ -153,16 +154,10 @@ void GLHandler::update() {
 			vec3(3, 0, -2),
 			vec3(0, 1, 0)
 		);
-		/*characters[0]->move(vec3(8, 0, 1.5f));
-		characters[2]->move(vec3(0, 0, 0.5f));
-		characters[3]->move(vec3(8, 0, -0.5f));
-		characters[0]->dance(0);
-		characters[1]->dance(0);
-		characters[2]->dance(0);
-		characters[3]->dance(0);*/
+		*renderer->skybox = glm::translate(*renderer->skybox, vec3(0, -0.3f, 0));
 		for (int i = 0; i < characters.size(); i++) {
 			if (i < characters.size() / 4) {
-				characters[i]->move(vec3(8, 0, 7 ));
+				characters[i]->move(vec3(8, 0, 7));
 			}
 			else if (i >= characters.size() / 4 * 2 && i < characters.size() / 4 * 3) {
 				characters[i]->move(vec3(16, 0, -15));

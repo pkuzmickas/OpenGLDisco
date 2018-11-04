@@ -11,22 +11,26 @@ float Camera::speed = 10;
 
 bool Camera::moving[4] = { false, false, false, false };
 
+float Camera::camMovedAmount = 0;
+
 void Camera::update(float dt) {
 	if (moving[FORWARD]) {
-		vec3 forward(camera[0][2], camera[1][2], camera[2][2]);
-		vec3 strafe(camera[0][0], camera[1][0], camera[2][0]);
-		vec3 movement = ( forward ) * speed * dt;
-
-		//camera = translate(camera, vec3(-speed * dt, 0, 0));
-		camera = translate(camera, vec3(movement.x, movement.y, movement.z));
+		if (camMovedAmount < 10) {
+			vec3 forward(camera[0][2], camera[1][2], camera[2][2]);
+			vec3 strafe(camera[0][0], camera[1][0], camera[2][0]);
+			vec3 movement = (forward)* speed * dt;
+			camMovedAmount += 10 * dt;
+			camera = translate(camera, vec3(movement.x, movement.y, movement.z));
+		}
 	}
 	else if (moving[BACKWARD]) {
-		//camera = translate(camera, vec3(speed * dt, 0, 0));
-		vec3 forward(camera[0][2], camera[1][2], camera[2][2]);
-		vec3 strafe(camera[0][0], camera[1][0], camera[2][0]);
-		vec3 movement = (-forward ) * speed * dt;
-
-		camera = translate(camera, vec3(movement.x, movement.y, movement.z));
+		if (camMovedAmount > -10) {
+			vec3 forward(camera[0][2], camera[1][2], camera[2][2]);
+			vec3 strafe(camera[0][0], camera[1][0], camera[2][0]);
+			vec3 movement = (-forward) * speed * dt;
+			camMovedAmount -= 10 * dt;
+			camera = translate(camera, vec3(movement.x, movement.y, movement.z));
+		}
 	}
 	else if (moving[RIGHT]) {
 		Camera::camera = translate(Camera::camera, vec3(3, 0, -2));

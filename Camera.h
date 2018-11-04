@@ -17,4 +17,6 @@ public:
 		LEFT
 	};
 	static void move(movingDir dir, bool isMoving);
+	static float camMovedAmount;
+
 };

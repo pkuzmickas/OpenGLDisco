@@ -1,17 +1,4 @@
 ﻿  Renderer.cpp
-p:\programming\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
-  GLHandler.cpp
-p:\programming\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
-p:\programming\graphics\opengldisco\glhandler.cpp(35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(140): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(141): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(163): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(164): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(167): warning C4018: '>=': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(167): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(170): warning C4018: '>=': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Character.cpp
-  thedisco.vcxproj -> P:\Programming\graphics\OpenGLDisco\Debug\thedisco.exe
+c:\users\pauliuskuzmickas\desktop\programming\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
+c:\users\pauliuskuzmickas\desktop\programming\opengldisco\renderer.cpp(24): warning C4101: 'e': unreferenced local variable
+  thedisco.vcxproj -> C:\Users\pauliuskuzmickas\Desktop\programming\opengldisco\Debug\thedisco.exe

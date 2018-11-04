@@ -7,4 +7,5 @@ public:
 	static const int NUM_OF_VALUES_POSITION = 3;
 	static const int NUM_OF_VALUES_COLOR = 4;
 	static const int NUM_OF_VALUES_NORMAL = 3;
+	static const int NUM_OF_VALUES_TEXTURE = 2;
 };
