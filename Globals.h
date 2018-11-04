@@ -1,3 +1,7 @@
+/* Globals.h
+ Static class to store the global variables.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 #define APP_TITLE "The Disco"
 class Globals {

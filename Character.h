@@ -1,3 +1,7 @@
+/* Character.h
+ Class responsible for creating and controlling a character.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 #include <glm/common.hpp>
 #include <glm/gtc/matrix_transform.hpp>

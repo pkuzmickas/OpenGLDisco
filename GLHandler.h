@@ -1,3 +1,9 @@
+/* GLHandler.h
+ Class to control the OpenGL functions, callbacks and creating and controlling the window.
+ Has the draw loop with updates.
+ One of the main classes of the program.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 
 #include "Globals.h"

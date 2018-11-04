@@ -1,5 +1,14 @@
+/* ShaderHandler.cpp
+ Class responsible for loading and building shader files.
+ Referenced Iain Martin's example code.
+ Paulius Kuzmickas October 2018.
+*/
 #include "ShaderHandler.h"
 using namespace std;
+
+/*
+	Function to load the shader and return the program.
+*/
 GLuint ShaderHandler::loadShader(const char *vertex_path, const char *fragment_path) {
 
 	GLuint vertShader, fragShader;
@@ -32,6 +41,9 @@ GLuint ShaderHandler::loadShader(const char *vertex_path, const char *fragment_p
 	return program;
 }
 
+/*
+	Function to build shader.
+*/
 GLuint ShaderHandler::buildShader(GLenum eShaderType, const string & shaderText) {
 	GLuint shader = glCreateShader(eShaderType);
 	const char *strFileData = shaderText.c_str();
@@ -68,6 +80,9 @@ GLuint ShaderHandler::buildShader(GLenum eShaderType, const string & shaderText)
 	return shader;
 }
 
+/*
+	Function to read a file.
+*/
 string ShaderHandler::readFile(const char * filePath) {
 	string content;
 	ifstream fileStream(filePath, ios::in);

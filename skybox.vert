@@ -1,3 +1,6 @@
+// Simple vertex shader for the skybox
+// Paulius Kuzmickas October 2018.
+
 #version 420
 
 layout(location = 0) in vec4 position;

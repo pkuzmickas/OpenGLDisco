@@ -1,9 +1,19 @@
+/* GLHandler.cpp
+ Class to control the OpenGL functions, callbacks and creating and controlling the window.
+ Has the draw loop with updates.
+ One of the main classes of the program.
+ Paulius Kuzmickas October 2018.
+*/
 #include "GLHandler.h"
 #include <stdlib.h> 
 #include <time.h> 
 using namespace std;
 
 bool GLHandler::sceneInit = false;
+
+/*
+	Creates the window, sets callback functions and creates the characters.
+*/
 GLHandler::GLHandler() {
 	if (!glfwInit())
 	{
@@ -33,6 +43,9 @@ GLHandler::GLHandler() {
 
 	srand(time(NULL));
 
+	/*
+		Creates the characters onto the screen.
+	*/
 	float startPos = -10.f;
 	for (int i = 0; i < 20; i++) {
 		int rgb[2][3] = { { rand() % 255 , rand() % 255, rand() % 255 }, { rand() % 255 , rand() % 255 , rand() % 255 } };
@@ -47,7 +60,9 @@ GLHandler::GLHandler() {
 
 
 }
-
+/*
+	Deletes the renderer and characters when the application closes.
+*/
 GLHandler::~GLHandler() {
 	if (renderer)
 		delete renderer;
@@ -55,23 +70,24 @@ GLHandler::~GLHandler() {
 		delete ch;
 	}
 }
-
+/*
+	Prints out the error.
+*/
 void GLHandler::errorCallback(int error, const char * desc) {
 	fputs(desc, stderr);
 }
-
+/*
+	Handles button presses.
+*/
 void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int action, int mods) {
 	if (action == GLFW_PRESS)
 	{
-		//camera movement
 		if (key_code == GLFW_KEY_W) {
 			Camera::move(Camera::movingDir::FORWARD, true);
 		}
 		else if (key_code == GLFW_KEY_S) {
 			Camera::move(Camera::movingDir::BACKWARD, true);
 		}
-			
-
 		if (key_code == GLFW_KEY_A)
 			Camera::move(Camera::movingDir::LEFT, true);
 		else if (key_code == GLFW_KEY_D)
@@ -96,37 +112,35 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 			if (Character::danceSpeed <= 500) {
 				Character::danceSpeed += 50;
 			}
-
 		}
 		if (key_code == GLFW_KEY_G) {
 			if (Character::danceSpeed >= 100) {
 				Character::danceSpeed -= 50;
 			}
 		}
-		// CHANGE CLOTHES?
 	}
 	if (action == GLFW_RELEASE)
 	{
-		//camera movement
-		if (key_code == GLFW_KEY_W) {
+		if (key_code == GLFW_KEY_W) 
 			Camera::move(Camera::movingDir::FORWARD, false);
-		}
-		else if (key_code == GLFW_KEY_S) {
+		else if (key_code == GLFW_KEY_S) 
 			Camera::move(Camera::movingDir::BACKWARD, false);
-		}
 		if (key_code == GLFW_KEY_A)
 			Camera::move(Camera::movingDir::LEFT, false);
 		else if (key_code == GLFW_KEY_D)
 			Camera::move(Camera::movingDir::RIGHT, false);
-
 	}
 }
-
+/*
+	Handles resize;
+*/
 void GLHandler::reshapeCallback(GLFWwindow * window, int width, int height) {
 	glViewport(0, 0, (GLsizei)width, (GLsizei)height);
 	Renderer::aspectRatio = float(width) / float(height);
 }
-
+/*
+	Main application loop.
+*/
 void GLHandler::play() {
 	while (!glfwWindowShouldClose(window))
 	{
@@ -136,8 +150,12 @@ void GLHandler::play() {
 		glfwPollEvents();
 	}
 }
-
+/*
+	Main application update function.
+	Gets called every frame.
+*/
 void GLHandler::update() {
+	// Calculates the time since last frame.
 	deltaTime = glfwGetTime() - lastTime;
 	lastTime = glfwGetTime();
 
@@ -147,6 +165,7 @@ void GLHandler::update() {
 		c->update(deltaTime);
 	}
 
+	// Moves characters and the skybox when the scene is initialized.
 	if (GLHandler::sceneInit && !initialized) {
 		initialized = true;
 		Camera::camera = lookAt(

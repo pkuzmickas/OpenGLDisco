@@ -1,3 +1,7 @@
+/* Camera.h
+ Static class to control and update the camera.
+ Paulius Kuzmickas October 2018.
+*/
 #include "Camera.h"
 using namespace glm;
 
@@ -13,6 +17,10 @@ bool Camera::moving[4] = { false, false, false, false };
 
 float Camera::camMovedAmount = 0;
 
+/*
+	Update function which is called every frame.
+	Updates the camera position if it is moving.
+*/
 void Camera::update(float dt) {
 	if (moving[FORWARD]) {
 		if (camMovedAmount < 10) {
@@ -44,7 +52,9 @@ void Camera::update(float dt) {
 	}
 
 }
-
+/*
+	Sets whether the camera is moving into the specified direction.
+*/
 void Camera::move(movingDir dir, bool isMoving) {
 	moving[dir] = isMoving;
 }

@@ -1,8 +1,15 @@
+/* Character.cpp
+ Class responsible for creating and controlling a character.
+ Paulius Kuzmickas October 2018.
+*/
 #include "Character.h"
 using namespace glm;
 
 float Character::danceSpeed = 250;
 
+/*
+	Function which applies the collected transformations onto a matrix.
+*/
 mat4 Character::applyTransforms(Parts part, mat4 mat) {
 	mat4 res = mat;
 	for (auto t : transforms[part]) {
@@ -20,6 +27,10 @@ mat4 Character::applyTransforms(Parts part, mat4 mat) {
 	return res;
 }
 
+/*
+	Constructor, where I create the character's body.
+	All the transformations are pushed onto a vector so that they could be reapplied later.
+*/
 Character::Character(Renderer * renderer, vec3 pos, int rgb[2][3]) {
 
 	for (int i = 0; i < 6; i++) {
@@ -102,7 +113,10 @@ Character::Character(Renderer * renderer, vec3 pos, int rgb[2][3]) {
 
 	rotVel = Character::danceSpeed;
 }
-
+/*
+	Function to translate the character's position.
+	Takes into consideration the scale of different body parts.
+*/
 void Character::move(vec3 pos) {
 	curPos = pos;
 	for (int i = 0; i < bodyParts.size(); i++) {
@@ -125,7 +139,10 @@ void Character::move(vec3 pos) {
 		
 	}
 }
-
+/*
+	Update function which is called every frame.
+	Updates the dance moves.
+*/
 void Character::update(float dt) {
 	if (dancing) {
 		if (danceStyle == 0) {
@@ -156,9 +173,10 @@ void Character::update(float dt) {
 	}
 }
 
+/*
+	Activates the dancing and sets the style type.
+*/
 void Character::dance(int style) {
 	danceStyle = style;
 	dancing = true;
-
-
 }

@@ -1,30 +1,32 @@
-// Minimal fragment shader
+// Basic fragment shader with diffuse and specular lighting
 
 #version 400 core
 
-in vec3 fposition, fnormal, flightpos;
-in vec4 fdiffuse, fspecular, fambient;
+in vec3 fLight, fNormal, fPosition;
+in vec4 fDiffuse, fAmbient, fSpecular;
 
 out vec4 outputColor;
 
 void main()
 {
-	vec3 to_light = flightpos - fposition;
-	float distance_to_light = length(to_light);
-	to_light = normalize(to_light);
-	vec3 fnormal_n = normalize(fnormal);
+	// Light distance and direction
+	vec3 vecToLight = fLight - fPosition;
+	float distToLight = length(vecToLight);
+	vecToLight = normalize(vecToLight);
 
-	//diffuse
-	vec4 diffuse = max(dot(fnormal_n, to_light), 0) * fdiffuse;
+	vec3 fNormalN = normalize(fNormal);
+
+	// Diffue lighting calculations
+	vec4 diffuse = max(dot(fNormalN, vecToLight), 0) * fDiffuse;
 	
-	//specular
-	vec3 normalised_vert = normalize(-fposition.xyz);
-	vec3 reflection = reflect(-to_light, fnormal_n);
-	vec4 specular = pow(max(dot(reflection, normalised_vert), 0), 50) * fspecular;
+	// Specular lighting calculations
+	vec3 posNormalised = normalize(-fPosition.xyz);
+	vec3 reflection = reflect(-vecToLight, fNormalN);
+	vec4 specular = pow(max(dot(reflection, posNormalised), 0), 50) * fSpecular;
 	
+	// Attenuation effect calculations
 	float k1 = .1;
-	float attenuation = 1.0 / (k1 + k1*distance_to_light + k1*pow(distance_to_light, 2));
+	float attenuation = 1.0 / (k1 + k1*distToLight + k1*pow(distToLight, 2));
 	
-
-	outputColor = attenuation*(diffuse + specular) + fambient;
+	outputColor = attenuation*(diffuse + specular) + fAmbient;
 }

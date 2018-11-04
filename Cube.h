@@ -1,3 +1,7 @@
+/* Cube.h
+ Static class to control the creation of a cube.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 #include <GLFW/glfw3.h>
 #include <vector>

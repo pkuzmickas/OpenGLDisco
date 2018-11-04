@@ -1,9 +1,17 @@
+/* Renderer.cpp
+ Class responsible for creating objects and drawing them onto the screen.
+ Paulius Kuzmickas October 2018.
+*/
 #include "Renderer.h"
 
 using namespace glm;
 
 float Renderer::aspectRatio = (float)Globals::WINDOW_WIDTH / Globals::WINDOW_HEIGHT;
 bool Renderer::drawDisco = false;
+
+/*
+	Loads the shaders, texture, gets uniform locations and creates the skybox.
+*/
 Renderer::Renderer() {
 	try
 	{
@@ -47,6 +55,9 @@ Renderer::Renderer() {
 	*skybox = scale(*skybox, vec3(25, 12, 25));
 }
 
+/*
+	Deletes all objects from the drawQueue when the application closes.
+*/
 Renderer::~Renderer() {
 	for (auto drw : drawQueue) {
 		if (drw.model) {
@@ -55,6 +66,9 @@ Renderer::~Renderer() {
 	}
 }
 
+/*
+	Functions handling drawing onto the screen
+*/
 void Renderer::draw() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -62,7 +76,13 @@ void Renderer::draw() {
 
 	vec3 lightPos = vec3(2.5f, 2, -2);
 
+	/*
+		Goes through and draws all objects currently in scene.
+	*/
 	for (auto obj : drawQueue) {
+		/*
+			If there is a texture, use the texture shader.
+		*/
 		if (obj.textureBufferId != -1) {
 			glUseProgram(textureProgram);
 		}
@@ -129,7 +149,9 @@ void Renderer::draw() {
 	glUseProgram(0);
 }
 
-
+/*
+	Function responsible for creating an object in memory.
+*/
 glm::mat4* Renderer::createObject(Renderer::Objects objectType, int rgb[3]) {
 
 	GLfloat* pos = NULL;
@@ -138,6 +160,8 @@ glm::mat4* Renderer::createObject(Renderer::Objects objectType, int rgb[3]) {
 	GLfloat* texture = NULL;
 	int sizeP, sizeC, sizeN, sizeT;
 	Object obj;
+	// Gets object vertices, etc. based on the object type.
+	// Idea is to later scale it to more object types.
 	switch (objectType) {
 	case CUBE: {
 		Cube::createCube(rgb, pos, color, normals, sizeP, sizeC, sizeN);
@@ -180,6 +204,7 @@ glm::mat4* Renderer::createObject(Renderer::Objects objectType, int rgb[3]) {
 
 	obj.model = new mat4(1.0f);
 
+	// Pushes the object onto the draw queue of things needed to be drawn.
 	drawQueue.push_back(obj);
 
 	return obj.model;

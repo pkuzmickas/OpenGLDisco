@@ -1,3 +1,7 @@
+/* Renderer.h
+ Class responsible for creating objects and drawing them onto the screen.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 #include <vector>
 #define GLEW_STATIC

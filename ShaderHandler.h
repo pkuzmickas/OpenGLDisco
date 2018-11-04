@@ -1,3 +1,8 @@
+/* ShaderHandler.h
+ Class responsible for loading and building shader files.
+ Referenced Iain Martin's example code.
+ Paulius Kuzmickas October 2018.
+*/
 #pragma once
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
