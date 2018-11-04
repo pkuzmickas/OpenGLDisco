@@ -2,6 +2,8 @@
 
 using namespace glm;
 
+float Renderer::aspectRatio = (float)Globals::WINDOW_WIDTH / Globals::WINDOW_HEIGHT;
+
 Renderer::Renderer() {
 	try
 	{
@@ -54,7 +56,7 @@ void Renderer::draw() {
 		mat4 view = Camera::camera;
 		view = translate(view, vec3(0.5f, 0, 0));
 
-		glm::mat4 projection = glm::perspective(glm::radians(30.0f), (float)Globals::WINDOW_WIDTH / Globals::WINDOW_HEIGHT, 0.1f, 100.f);
+		glm::mat4 projection = glm::perspective(glm::radians(30.0f), aspectRatio, 0.1f, 100.f);
 		
 		glUniformMatrix4fv(modelID, 1, GL_FALSE, &model[0][0]);
 		glUniformMatrix4fv(viewID, 1, GL_FALSE, &view[0][0]);

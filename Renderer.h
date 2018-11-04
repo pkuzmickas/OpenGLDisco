@@ -36,6 +36,7 @@ public:
 	void draw();
 	// Creates an object and returns a reference to its model
 	glm::mat4* createObject(Renderer::Objects objectType, int rgb[3]);
+	static float aspectRatio;
 
 private:
 	vector<Object> drawQueue;

@@ -29,14 +29,14 @@ void Camera::update(float dt) {
 		camera = translate(camera, vec3(movement.x, movement.y, movement.z));
 	}
 	else if (moving[RIGHT]) {
-		Camera::camera = translate(Camera::camera, vec3(1, 0, 0));
+		Camera::camera = translate(Camera::camera, vec3(3, 0, -2));
 		Camera::camera = rotate(Camera::camera, radians(-90 * dt), vec3(0, 1, 0));
-		Camera::camera = translate(Camera::camera, vec3(-1, 0, 0));
+		Camera::camera = translate(Camera::camera, vec3(-3, 0, 2));
 	}
 	else if (moving[LEFT]) {
-		Camera::camera = translate(Camera::camera, vec3(1, 0, 0));
+		Camera::camera = translate(Camera::camera, vec3(3, 0, -2));
 		Camera::camera = rotate(Camera::camera, radians(90 * dt), vec3(0, 1, 0));
-		Camera::camera = translate(Camera::camera, vec3(-1, 0, 0));
+		Camera::camera = translate(Camera::camera, vec3(-3, 0, 2));
 	}
 
 }

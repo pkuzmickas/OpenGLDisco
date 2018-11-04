@@ -1,5 +1,11 @@
 ﻿  GLHandler.cpp
-c:\users\pauliuskuzmickas\desktop\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
-c:\users\pauliuskuzmickas\desktop\graphics\opengldisco\glhandler.cpp(107): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\pauliuskuzmickas\desktop\graphics\opengldisco\glhandler.cpp(108): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  thedisco.vcxproj -> C:\Users\pauliuskuzmickas\Desktop\GRAPHICS\opengldisco\Debug\thedisco.exe
+p:\programming\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
+p:\programming\graphics\opengldisco\glhandler.cpp(35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+p:\programming\graphics\opengldisco\glhandler.cpp(131): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+p:\programming\graphics\opengldisco\glhandler.cpp(132): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+p:\programming\graphics\opengldisco\glhandler.cpp(154): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(155): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(158): warning C4018: '>=': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(158): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(161): warning C4018: '>=': signed/unsigned mismatch
+  thedisco.vcxproj -> P:\Programming\graphics\OpenGLDisco\Debug\thedisco.exe
