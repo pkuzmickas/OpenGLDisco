@@ -37,7 +37,7 @@ GLHandler::GLHandler() {
 	float startPos = -10.f;
 	for (int i = 0; i < 20; i++) {
 		int rgb[2][3] = { { rand() % 255 , rand() % 255, rand() % 255 }, { rand() % 255 , rand() % 255 , rand() % 255 } };
-		characters.push_back(new Character(renderer, vec3(0, 0, startPos + i), rgb));
+		characters.push_back(new Character(renderer, vec3(0, 0, startPos + i*1.6f), rgb));
 	}
 	
 
@@ -78,6 +78,7 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 		
 		if (key_code == GLFW_KEY_ENTER) {
 			GLHandler::sceneInit = true;
+			Renderer::drawDisco = true;
 			std::cout << endl << endl << endl;
 			std::cout << "*************************************" << endl;
 			std::cout << "THE DISCO HAS BEGUN" << endl;
@@ -87,13 +88,21 @@ void GLHandler::keyCallback(GLFWwindow * window, int key_code, int scancode, int
 			std::cout << "S - Zoom Out" << endl;
 			std::cout << "A - Rotate Left" << endl;
 			std::cout << "D - Rotate Right" << endl;
+			std::cout << "F - Increase Dance Speed" << endl;
+			std::cout << "G - Decrease Dance Speed" << endl;
 		}
 		if (key_code == GLFW_KEY_F) {
-			Character::danceSpeed += 50;
+			if (Character::danceSpeed <= 500) {
+				Character::danceSpeed += 50;
+			}
+			
 		}
 		if (key_code == GLFW_KEY_G) {
-			Character::danceSpeed -= 50;
+			if (Character::danceSpeed >= 100) {
+				Character::danceSpeed -= 50;
+			}
 		}
+		// CHANGE CLOTHES?
 	}
 	if (action == GLFW_RELEASE)
 	{
@@ -156,11 +165,15 @@ void GLHandler::update() {
 				characters[i]->move(vec3(8, 0, 7 ));
 			}
 			else if (i >= characters.size() / 4 * 2 && i < characters.size() / 4 * 3) {
-				characters[i]->move(vec3(16, 0, -5));
+				characters[i]->move(vec3(16, 0, -15));
 			}
 			else if (i >= characters.size() / 4 * 3) {
-				characters[i]->move(vec3(22, 0, -11));
+				characters[i]->move(vec3(22, 0, -24));
 			}
+			else {
+				characters[i]->move(vec3(0, 0, -5));
+			}
+			characters[i]->dance(0);
 
 		}
 	}

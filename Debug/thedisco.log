@@ -1,11 +1,17 @@
-﻿  GLHandler.cpp
+﻿  Renderer.cpp
+p:\programming\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
+  GLHandler.cpp
 p:\programming\graphics\opengldisco\camera.h(18): warning C4091: 'static ': ignored on left of 'Camera::movingDir' when no variable is declared
 p:\programming\graphics\opengldisco\glhandler.cpp(35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(131): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(132): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-p:\programming\graphics\opengldisco\glhandler.cpp(154): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(155): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(158): warning C4018: '>=': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(158): warning C4018: '<': signed/unsigned mismatch
-p:\programming\graphics\opengldisco\glhandler.cpp(161): warning C4018: '>=': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(140): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+p:\programming\graphics\opengldisco\glhandler.cpp(141): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+p:\programming\graphics\opengldisco\glhandler.cpp(163): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(164): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(167): warning C4018: '>=': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(167): warning C4018: '<': signed/unsigned mismatch
+p:\programming\graphics\opengldisco\glhandler.cpp(170): warning C4018: '>=': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Character.cpp
   thedisco.vcxproj -> P:\Programming\graphics\OpenGLDisco\Debug\thedisco.exe

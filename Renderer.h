@@ -14,15 +14,14 @@
 #include "Cube.h"
 #include "ShaderHandler.h"
 #include "Globals.h"
-
+#include "sphere.h"
 
 using namespace std;
 class Shader;
 class Renderer {
 public:
 	enum Objects {
-		CUBE,
-		SPHERE
+		CUBE
 	};
 	struct Object {
 		GLuint posBufferId;
@@ -37,12 +36,14 @@ public:
 	// Creates an object and returns a reference to its model
 	glm::mat4* createObject(Renderer::Objects objectType, int rgb[3]);
 	static float aspectRatio;
+	static bool drawDisco;
+	Sphere discoBall;
 
 private:
 	vector<Object> drawQueue;
 	GLuint program;
 	ShaderHandler shaderHandler;
-	GLint modelID, viewID, projectionID;
+	GLint modelID, viewID, projectionID, lightID;
 	
 
 };

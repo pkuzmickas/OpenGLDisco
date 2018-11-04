@@ -146,6 +146,7 @@ void Character::update(float dt) {
 			
 			rot += rotVel * dt;
 			if (rot > 60 || rot < -60) {
+				if (rot > 60) rot = 60; else rot = -60;
 				rotVel *= -1;
 				rotVel = rotVel < 0 ? -Character::danceSpeed : Character::danceSpeed;
 				

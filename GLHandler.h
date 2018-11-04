@@ -4,6 +4,8 @@
 
 #include "Character.h"
 #include <iostream>
+#include "sphere.h"
+
 class GLHandler {
 private:
 	GLFWwindow* window;

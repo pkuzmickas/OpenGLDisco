@@ -3,7 +3,7 @@
 using namespace glm;
 
 float Renderer::aspectRatio = (float)Globals::WINDOW_WIDTH / Globals::WINDOW_HEIGHT;
-
+bool Renderer::drawDisco = false;
 Renderer::Renderer() {
 	try
 	{
@@ -18,10 +18,12 @@ Renderer::Renderer() {
 	modelID = glGetUniformLocation(program, "model");
 	viewID = glGetUniformLocation(program, "view");
 	projectionID = glGetUniformLocation(program, "projection");
+	lightID = glGetUniformLocation(program, "light");
 
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0, 0, 0, 1);
 
+	discoBall.makeSphere(20, 20);
 }
 
 Renderer::~Renderer() {
@@ -37,6 +39,8 @@ void Renderer::draw() {
 	
 	glUseProgram(program);
 	
+	vec3 lightPos = vec3(2.5f, 2, -2);
+
 	for (auto obj : drawQueue) {
 		glBindBuffer(GL_ARRAY_BUFFER, obj.posBufferId);
 		glEnableVertexAttribArray(0);
@@ -56,18 +60,31 @@ void Renderer::draw() {
 		mat4 view = Camera::camera;
 		view = translate(view, vec3(0.5f, 0, 0));
 
-		glm::mat4 projection = glm::perspective(glm::radians(30.0f), aspectRatio, 0.1f, 100.f);
+		mat4 projection = perspective(glm::radians(30.0f), aspectRatio, 0.1f, 100.f);
 		
+		vec4 light = vec4(lightPos, 1);
+
 		glUniformMatrix4fv(modelID, 1, GL_FALSE, &model[0][0]);
 		glUniformMatrix4fv(viewID, 1, GL_FALSE, &view[0][0]);
 		glUniformMatrix4fv(projectionID, 1, GL_FALSE, &projection[0][0]);
+		glUniform4fv(lightID, 1, &light[0]);
 
 		glDrawArrays(GL_TRIANGLES, 0, obj.numberOfVertices);
 
 		glDisableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
+	//Drawing the disco ball
+	if(drawDisco)
+	{
+		mat4 model = mat4(1.f);
+		model = translate(model, lightPos);
+		model = scale(model, vec3(0.4f, 0.4f, 0.4f));//scale equally in all axis
 
+		glUniformMatrix4fv(modelID, 1, GL_FALSE, &(model[0][0]));
+
+		discoBall.drawSphere(0);
+	}
 	glUseProgram(0);
 }
 
